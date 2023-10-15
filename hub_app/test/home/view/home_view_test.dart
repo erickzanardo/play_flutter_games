@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hub_domain/hub_domain.dart';
 import 'package:mockingjay/mockingjay.dart';
-import 'package:very_good_hub/app/app.dart';
-import 'package:very_good_hub/home/home.dart';
+import 'package:play_flutter_games_hub/app/app.dart';
+import 'package:play_flutter_games_hub/home/home.dart';
 
 import '../../helpers/helpers.dart';
 

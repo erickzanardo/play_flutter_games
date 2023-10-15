@@ -4,7 +4,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hub_domain/hub_domain.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:very_good_hub/home/home.dart';
+import 'package:play_flutter_games_hub/home/home.dart';
 
 class _MockPostRepository extends Mock implements PostRepository {}
 

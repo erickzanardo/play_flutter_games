@@ -1,4 +1,4 @@
-/// Client to access the APIs of Very Good Hub
+/// Client to access the APIs of Play Flutter Games Hub
 library api_client;
 
 export 'package:http/http.dart';

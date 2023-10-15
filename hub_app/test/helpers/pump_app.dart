@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:very_good_hub/l10n/l10n.dart';
+import 'package:play_flutter_games_hub/l10n/l10n.dart';
 
 extension PumpApp on WidgetTester {
   Future<void> pumpRoute(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_hub/auth/auth.dart';
-import 'package:very_good_hub/l10n/l10n.dart';
+import 'package:play_flutter_games_hub/auth/auth.dart';
+import 'package:play_flutter_games_hub/l10n/l10n.dart';
 
 class AuthViewView extends StatefulWidget {
   const AuthViewView({super.key});
@@ -70,14 +70,10 @@ class _AuthViewViewState extends State<AuthViewView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/pixel_unicorn.png',
-                filterQuality: FilterQuality.none,
+                'assets/images/banner.png',
+                width: 450,
               ),
               const SizedBox(height: 16),
-              Text(
-                l10n.veryGoodHub,
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
               Text(
                 l10n.appTagline,
                 style: Theme.of(context).textTheme.titleMedium,

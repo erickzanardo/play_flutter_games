@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hub_domain/hub_domain.dart';
-import 'package:very_good_hub/home/home.dart';
+import 'package:play_flutter_games_hub/home/home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

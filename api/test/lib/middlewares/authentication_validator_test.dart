@@ -2,9 +2,9 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:hub_domain/hub_domain.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:play_flutter_games_api/middlewares/middlewares.dart';
 import 'package:test/test.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:very_good_hub_api/middlewares/middlewares.dart';
 
 class _MockContext extends Mock implements RequestContext {
   @override

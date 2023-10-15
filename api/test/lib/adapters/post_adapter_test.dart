@@ -1,8 +1,8 @@
 import 'package:db_client/db_client.dart';
 import 'package:hub_domain/hub_domain.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:play_flutter_games_api/adapters/adapters.dart';
 import 'package:test/test.dart';
-import 'package:very_good_hub_api/adapters/adapters.dart';
 
 class _MockDbClient extends Mock implements DbClient {}
 

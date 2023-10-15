@@ -2,8 +2,8 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:dart_frog_auth/dart_frog_auth.dart';
 import 'package:hub_domain/hub_domain.dart';
+import 'package:play_flutter_games_api/models/models.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:very_good_hub_api/models/models.dart';
 
 /// Middleware that checks if the request authentication is valid.
 ///

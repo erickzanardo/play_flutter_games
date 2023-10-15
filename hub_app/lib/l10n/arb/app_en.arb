@@ -9,11 +9,7 @@
           }
         }
     },
-    "veryGoodHub": "Very Good Hub",
-    "@veryGoodHub": {
-        "description": "App title."
-    },
-    "appTagline": "Where unicons meet",
+    "appTagline": "Where Flutter Games meet",
     "@appTagline": {
         "description": "App tag line."
     },

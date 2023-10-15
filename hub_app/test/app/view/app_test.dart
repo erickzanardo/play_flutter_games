@@ -2,10 +2,10 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hub_domain/hub_domain.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:play_flutter_games_hub/app/app.dart';
+import 'package:play_flutter_games_hub/auth/auth.dart';
 import 'package:token_provider/token_provider.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:very_good_hub/app/app.dart';
-import 'package:very_good_hub/auth/auth.dart';
 
 class _MockAuthenticationRepository extends Mock
     implements AuthenticationRepository {}

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hub_domain/hub_domain.dart';
+import 'package:play_flutter_games_hub/create_post/create_post.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:very_good_hub/create_post/create_post.dart';
 
 class CreatePostPage extends StatelessWidget {
   const CreatePostPage({super.key});

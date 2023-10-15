@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:very_good_hub/profile/profile.dart';
+import 'package:play_flutter_games_hub/profile/profile.dart';
 
 void main() {
   group('ProfileRequested', () {

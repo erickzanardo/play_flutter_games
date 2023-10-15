@@ -4,7 +4,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:db_client/db_client.dart';
 import 'package:hub_domain/hub_domain.dart';
-import 'package:very_good_hub_api/adapters/adapters.dart';
+import 'package:play_flutter_games_api/adapters/adapters.dart';
 
 late final DbClient _dbClient;
 late final AuthenticationRepository _authenticationRepository;

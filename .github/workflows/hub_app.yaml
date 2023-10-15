@@ -1,4 +1,4 @@
-name: very_good_hub
+name: play_flutter_games_hub
 
 concurrency:
   group: $-$

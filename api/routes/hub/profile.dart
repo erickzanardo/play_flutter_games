@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dart_frog/dart_frog.dart';
-import 'package:very_good_hub_api/models/models.dart';
+import 'package:play_flutter_games_api/models/models.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   return switch (context.request.method) {

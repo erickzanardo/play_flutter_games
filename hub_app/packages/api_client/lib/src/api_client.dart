@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:token_provider/token_provider.dart';
 
 /// {@template api_client}
-/// Client to access the APIs of Very Good Hub.
+/// Client to access the APIs of Play flutter Games Hub.
 /// {@endtemplate}
 class ApiClient {
   /// {@macro api_client}

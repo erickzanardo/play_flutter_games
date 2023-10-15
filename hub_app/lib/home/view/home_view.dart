@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:very_good_hub/app/app.dart';
-import 'package:very_good_hub/create_post/create_post.dart';
-import 'package:very_good_hub/home/home.dart';
-import 'package:very_good_hub/l10n/l10n.dart';
-import 'package:very_good_hub/profile/profile.dart';
+import 'package:play_flutter_games_hub/app/app.dart';
+import 'package:play_flutter_games_hub/create_post/create_post.dart';
+import 'package:play_flutter_games_hub/home/home.dart';
+import 'package:play_flutter_games_hub/l10n/l10n.dart';
+import 'package:play_flutter_games_hub/profile/profile.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

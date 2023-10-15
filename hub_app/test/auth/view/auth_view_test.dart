@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:very_good_hub/app/app.dart';
-import 'package:very_good_hub/auth/auth.dart';
+import 'package:play_flutter_games_hub/app/app.dart';
+import 'package:play_flutter_games_hub/auth/auth.dart';
 
 import '../../helpers/helpers.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:play_flutter_games_hub/profile/profile.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:very_good_hub/profile/profile.dart';
 
 import '../../helpers/helpers.dart';
 

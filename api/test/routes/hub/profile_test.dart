@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:hub_domain/hub_domain.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:play_flutter_games_api/models/models.dart';
 import 'package:test/test.dart';
-import 'package:very_good_hub_api/models/models.dart';
 
 import '../../../routes/hub/profile.dart' as route;
 
