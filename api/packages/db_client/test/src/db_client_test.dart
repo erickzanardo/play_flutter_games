@@ -94,5 +94,24 @@ void main() {
 
       expect(user, equals({'id': id, 'name': 'Jane Doe'}));
     });
+
+    test('can update a document field by its id', () async {
+      final id = await dbClient.add('users', {'name': 'John Doe', 'age': 20});
+
+      await dbClient.updateFieldById('users', id, 'age', 21);
+
+      final user = await dbClient.getById('users', id);
+
+      expect(
+        user,
+        equals(
+          {
+            'id': id,
+            'name': 'John Doe',
+            'age': 21,
+          },
+        ),
+      );
+    });
   });
 }

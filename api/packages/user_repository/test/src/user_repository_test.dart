@@ -226,5 +226,22 @@ void main() {
       final user = await userRepository.findUserById('1');
       expect(user, isNull);
     });
+
+    test('setDeveloperMode changes the field with the new value', () async {
+      when(() => dbClient.updateFieldById(any(), any(), any(), any<dynamic>()))
+          .thenAnswer(
+        (_) async {},
+      );
+
+      await userRepository.setDeveloperMode(userId: '1', value: true);
+      verify(
+        () => dbClient.updateFieldById(
+          'users',
+          '1',
+          'isDeveloper',
+          true,
+        ),
+      );
+    });
   });
 }

@@ -102,4 +102,17 @@ class UserRepository {
 
     return null;
   }
+
+  /// Updates the developer mode field from the given user id.
+  Future<void> setDeveloperMode({
+    required String userId,
+    required bool value,
+  }) async {
+    await _dbClient.updateFieldById(
+      _tableName,
+      userId,
+      'isDeveloper',
+      value,
+    );
+  }
 }
