@@ -56,6 +56,7 @@ void main() {
             'id': 'id',
             'username': 'username',
             'name': 'name',
+            'isDeveloper': false,
           },
         ),
       );
@@ -67,9 +68,15 @@ void main() {
           'id': 'id',
           'username': 'username',
           'name': 'name',
+          'isDeveloper': true,
         }),
         equals(
-          User(id: 'id', username: 'username', name: 'name'),
+          User(
+            id: 'id',
+            username: 'username',
+            name: 'name',
+            isDeveloper: true,
+          ),
         ),
       );
     });

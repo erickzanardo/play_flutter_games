@@ -13,6 +13,7 @@ class User extends Equatable {
     required this.id,
     required this.username,
     required this.name,
+    this.isDeveloper = false,
   });
 
   /// {@macro from_json}
@@ -27,9 +28,12 @@ class User extends Equatable {
   /// User name.
   final String name;
 
+  /// If the user is a developer.
+  final bool isDeveloper;
+
   /// Returns this object as a JSON map.
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
   @override
-  List<Object?> get props => [id, username, name];
+  List<Object?> get props => [id, username, name, isDeveloper];
 }
