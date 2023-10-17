@@ -90,6 +90,8 @@ class DbClient {
     String field,
     dynamic value,
   ) async {
+    print(_memory[entity]?[id]);
+    print(field);
     _memory[entity]?[id]?[field] = value;
   }
 }

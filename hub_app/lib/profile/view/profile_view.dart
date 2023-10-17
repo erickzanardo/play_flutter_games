@@ -9,7 +9,8 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final state = context.watch<ProfileBloc>().state;
+    final bloc = context.watch<ProfileBloc>();
+    final state = bloc.state;
 
     if (state is ProfileLoadInProgress) {
       return const Scaffold(
@@ -20,13 +21,41 @@ class ProfileView extends StatelessWidget {
     } else if (state is ProfileLoaded) {
       return Scaffold(
         appBar: AppBar(),
-        body: Center(
-          child: Column(
-            children: [
-              Text('Name: ${state.user.name}'),
-              Text('Username: ${state.user.username}'),
-            ],
-          ),
+        body: Stack(
+          children: [
+            Center(
+              child: Card(
+                child: Column(
+                  children: [
+                    Text('Name: ${state.user.name}'),
+                    Text('Username: ${state.user.username}'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Are you making games:'),
+                        Switch(
+                          value: state.user.isDeveloper,
+                          onChanged: (value) {
+                            bloc.add(
+                              DeveloperModeChanged(
+                                isDeveloperMode: value,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (state is ProfileSaving)
+              const Positioned(
+                right: 16,
+                top: 16,
+                child: CircularProgressIndicator(),
+              ),
+          ],
         ),
       );
     } else {

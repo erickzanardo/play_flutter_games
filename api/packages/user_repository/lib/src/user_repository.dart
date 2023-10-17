@@ -40,10 +40,11 @@ class UserRepository {
       throw UserAlreadyExistsException();
     }
 
-    final data = {
+    final data = <String, dynamic>{
       'username': username,
       'name': name,
       'password': _hashValue(password),
+      'isDeveloper': false,
     };
 
     final id = await _dbClient.add(_tableName, data);
