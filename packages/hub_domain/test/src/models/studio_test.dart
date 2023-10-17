@@ -10,6 +10,7 @@ void main() {
         Studio(
           id: '',
           name: '',
+          userId: '',
           description: '',
           website: '',
         ),
@@ -23,12 +24,14 @@ void main() {
           id: '',
           name: '',
           description: '',
+          userId: '',
           website: '',
         ),
         equals(
           Studio(
             id: '',
             name: '',
+            userId: '',
             description: '',
             website: '',
           ),
@@ -39,6 +42,7 @@ void main() {
         Studio(
           id: '',
           name: '',
+          userId: '',
           description: '',
           website: '',
         ),
@@ -47,6 +51,7 @@ void main() {
             Studio(
               id: '1',
               name: '',
+              userId: '',
               description: '',
               website: '',
             ),
@@ -58,6 +63,7 @@ void main() {
         Studio(
           id: '',
           name: '',
+          userId: '',
           description: '',
           website: '',
         ),
@@ -66,6 +72,7 @@ void main() {
             Studio(
               id: '',
               name: '1',
+              userId: '',
               description: '',
               website: '',
             ),
@@ -77,6 +84,7 @@ void main() {
         Studio(
           id: '',
           name: '',
+          userId: '',
           description: '',
           website: '',
         ),
@@ -86,6 +94,7 @@ void main() {
               id: '',
               name: '',
               description: '1',
+              userId: '',
               website: '',
             ),
           ),
@@ -97,6 +106,7 @@ void main() {
           id: '',
           name: '',
           description: '',
+          userId: '',
           website: '',
         ),
         isNot(
@@ -104,6 +114,28 @@ void main() {
             Studio(
               id: '',
               name: '',
+              description: '',
+              userId: '1',
+              website: '',
+            ),
+          ),
+        ),
+      );
+
+      expect(
+        Studio(
+          id: '',
+          name: '',
+          description: '',
+          userId: '',
+          website: '',
+        ),
+        isNot(
+          equals(
+            Studio(
+              id: '',
+              name: '',
+              userId: '',
               description: '',
               website: '1',
             ),
@@ -119,6 +151,7 @@ void main() {
           name: 'name',
           description: 'description',
           website: 'website',
+          userId: 'userId',
         ).toJson(),
         equals(
           {
@@ -126,6 +159,7 @@ void main() {
             'name': 'name',
             'description': 'description',
             'website': 'website',
+            'userId': 'userId',
           },
         ),
       );
@@ -139,6 +173,7 @@ void main() {
             'name': 'name',
             'description': 'description',
             'website': 'website',
+            'userId': 'userId',
           },
         ),
         equals(
@@ -147,6 +182,7 @@ void main() {
             name: 'name',
             description: 'description',
             website: 'website',
+            userId: 'userId',
           ),
         ),
       );
