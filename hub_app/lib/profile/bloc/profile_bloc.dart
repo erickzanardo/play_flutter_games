@@ -37,7 +37,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     final loadedState = state;
     if (loadedState is ProfileLoaded) {
-      // TODO test this
       try {
         emit(ProfileSaving(loadedState.user));
         await _userRepository.setDeveloperMode(value: event.isDeveloperMode);
