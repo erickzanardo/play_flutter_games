@@ -10,3 +10,14 @@ class ProfileRequested extends ProfileEvent {
   @override
   List<Object> get props => [];
 }
+
+class DeveloperModeChanged extends ProfileEvent {
+  const DeveloperModeChanged({
+    required this.isDeveloperMode,
+  });
+
+  final bool isDeveloperMode;
+
+  @override
+  List<Object> get props => [isDeveloperMode];
+}

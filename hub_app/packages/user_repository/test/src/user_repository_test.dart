@@ -144,5 +144,76 @@ void main() {
         },
       );
     });
+
+    group('setDeveloperMode', () {
+      test('sets the new value', () async {
+        final response = _MockResponse();
+        when(() => response.statusCode).thenReturn(HttpStatus.noContent);
+
+        when(
+          () => apiClient.authenticatedPost(
+            'hub/profile/developer_mode',
+            body: jsonEncode({'value': true}),
+          ),
+        ).thenAnswer((_) async => response);
+
+        await userRepository.setDeveloperMode(value: true);
+        verify(
+          () => apiClient.authenticatedPost(
+            'hub/profile/developer_mode',
+            body: jsonEncode({'value': true}),
+          ),
+        ).called(1);
+      });
+
+      test(
+        'throws AuthenticationFailure when the user is not authenticated',
+        () async {
+          final response = _MockResponse();
+          when(() => response.statusCode).thenReturn(HttpStatus.unauthorized);
+
+          when(
+            () => apiClient.authenticatedPost(
+              'hub/profile/developer_mode',
+              body: jsonEncode({'value': true}),
+            ),
+          ).thenAnswer((_) async => response);
+
+          await expectLater(
+            () => userRepository.setDeveloperMode(value: true),
+            throwsA(isA<AuthenticationFailure>()),
+          );
+        },
+      );
+
+      test(
+        'throws UserInformationFailure when something else goes wrong',
+        () async {
+          final response = _MockResponse();
+          when(() => response.statusCode).thenReturn(
+            HttpStatus.internalServerError,
+          );
+          when(() => response.body).thenReturn('Error');
+
+          when(
+            () => apiClient.authenticatedPost(
+              'hub/profile/developer_mode',
+              body: jsonEncode({'value': true}),
+            ),
+          ).thenAnswer((_) async => response);
+
+          await expectLater(
+            () => userRepository.setDeveloperMode(value: true),
+            throwsA(
+              isA<UserInformationFailure>().having(
+                (e) => e.message,
+                'message',
+                equals('Error setting developer mode:\n500\nError'),
+              ),
+            ),
+          );
+        },
+      );
+    });
   });
 }

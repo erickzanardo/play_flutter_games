@@ -21,4 +21,31 @@ void main() {
       );
     });
   });
+
+  group('DeveloperModeChanged', () {
+    test('can be instantiated', () {
+      expect(
+        DeveloperModeChanged(isDeveloperMode: true),
+        isNotNull,
+      );
+    });
+
+    test('supports value comparison', () {
+      expect(
+        DeveloperModeChanged(isDeveloperMode: true),
+        equals(
+          DeveloperModeChanged(isDeveloperMode: true),
+        ),
+      );
+
+      expect(
+        DeveloperModeChanged(isDeveloperMode: false),
+        isNot(
+          equals(
+            DeveloperModeChanged(isDeveloperMode: true),
+          ),
+        ),
+      );
+    });
+  });
 }

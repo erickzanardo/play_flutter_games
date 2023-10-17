@@ -98,6 +98,119 @@ void main() {
     });
   });
 
+  group('ProfileSavingFailed', () {
+    test('can be instantiated', () {
+      expect(
+        ProfileSaveFailed(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        isNotNull,
+      );
+    });
+
+    test('supports value comparison', () {
+      expect(
+        ProfileSaveFailed(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        equals(
+          ProfileSaveFailed(
+            User(
+              id: 'id',
+              name: 'name',
+              username: 'username',
+            ),
+          ),
+        ),
+      );
+
+      expect(
+        ProfileSaveFailed(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        equals(
+          isNot(
+            ProfileSaveFailed(
+              User(
+                id: 'id2',
+                name: 'name',
+                username: 'username',
+              ),
+            ),
+          ),
+        ),
+      );
+    });
+  });
+  group('ProfileSaving', () {
+    test('can be instantiated', () {
+      expect(
+        ProfileSaving(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        isNotNull,
+      );
+    });
+
+    test('supports value comparison', () {
+      expect(
+        ProfileSaving(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        equals(
+          ProfileSaving(
+            User(
+              id: 'id',
+              name: 'name',
+              username: 'username',
+            ),
+          ),
+        ),
+      );
+
+      expect(
+        ProfileSaving(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        equals(
+          isNot(
+            ProfileSaving(
+              User(
+                id: 'id2',
+                name: 'name',
+                username: 'username',
+              ),
+            ),
+          ),
+        ),
+      );
+    });
+  });
+
   group('ProfileLoadFailure', () {
     test('can be instantiated', () {
       expect(

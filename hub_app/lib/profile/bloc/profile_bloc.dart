@@ -12,6 +12,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   })  : _userRepository = userRepository,
         super(const ProfileInitial()) {
     on<ProfileRequested>(_onProfileRequested);
+    on<DeveloperModeChanged>(_onDeveloperModeChanged);
   }
 
   final UserRepository _userRepository;
@@ -27,6 +28,30 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     } catch (e, s) {
       addError(e, s);
       emit(const ProfileLoadFailure());
+    }
+  }
+
+  Future<void> _onDeveloperModeChanged(
+    DeveloperModeChanged event,
+    Emitter<ProfileState> emit,
+  ) async {
+    final loadedState = state;
+    if (loadedState is ProfileLoaded) {
+      // TODO test this
+      try {
+        emit(ProfileSaving(loadedState.user));
+        await _userRepository.setDeveloperMode(value: event.isDeveloperMode);
+        emit(
+          ProfileLoaded(
+            loadedState.user.copyWith(
+              isDeveloper: event.isDeveloperMode,
+            ),
+          ),
+        );
+      } catch (e, s) {
+        addError(e, s);
+        emit(ProfileSaveFailed(loadedState.user));
+      }
     }
   }
 }

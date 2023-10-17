@@ -74,4 +74,28 @@ class UserRepository {
       return json['token'] as String;
     }
   }
+
+  /// Sets the value of the developer mode of a user.
+  Future<void> setDeveloperMode({
+    required bool value,
+  }) async {
+    final response = await _apiClient.authenticatedPost(
+      'hub/profile/developer_mode',
+      body: jsonEncode(
+        {
+          'value': value,
+        },
+      ),
+    );
+
+    if (response.statusCode == HttpStatus.unauthorized) {
+      throw AuthenticationFailure();
+    } else if (response.statusCode != HttpStatus.noContent) {
+      throw UserInformationFailure(
+        message: 'Error setting developer mode:\n${response.statusCode}'
+            '\n${response.body}',
+        stackTrace: StackTrace.current,
+      );
+    }
+  }
 }
