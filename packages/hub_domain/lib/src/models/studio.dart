@@ -13,6 +13,7 @@ class Studio extends Equatable {
     required this.id,
     required this.name,
     required this.description,
+    required this.userId,
     required this.website,
   });
 
@@ -28,6 +29,9 @@ class Studio extends Equatable {
   /// Studio description.
   final String description;
 
+  /// Studio owner id.
+  final String userId;
+
   /// Studio website
   final String? website;
 
@@ -35,5 +39,5 @@ class Studio extends Equatable {
   Map<String, dynamic> toJson() => _$StudioToJson(this);
 
   @override
-  List<Object?> get props => [id, name, description, website];
+  List<Object?> get props => [id, name, description, website, userId];
 }
