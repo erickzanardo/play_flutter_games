@@ -34,6 +34,22 @@ class User extends Equatable {
   /// Returns this object as a JSON map.
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
+  /// Returns a copy of this object with the given fields replaced with the
+  /// new values.
+  User copyWith({
+    String? id,
+    String? username,
+    String? name,
+    bool? isDeveloper,
+  }) {
+    return User(
+      id: id ?? this.id,
+      username: username ?? this.username,
+      name: name ?? this.name,
+      isDeveloper: isDeveloper ?? this.isDeveloper,
+    );
+  }
+
   @override
   List<Object?> get props => [id, username, name, isDeveloper];
 }

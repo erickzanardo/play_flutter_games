@@ -80,5 +80,24 @@ void main() {
         ),
       );
     });
+
+    test('copyWith returns a new instance with the updated values', () {
+      expect(
+        User(id: 'id', username: 'username', name: 'name').copyWith(
+          id: 'id1',
+          username: 'username1',
+          name: 'name1',
+          isDeveloper: true,
+        ),
+        equals(
+          User(
+            id: 'id1',
+            username: 'username1',
+            name: 'name1',
+            isDeveloper: true,
+          ),
+        ),
+      );
+    });
   });
 }
