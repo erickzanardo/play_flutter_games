@@ -83,6 +83,14 @@ void main() {
 
     test('copyWith returns a new instance with the updated values', () {
       expect(
+        User(id: 'id', username: 'username', name: 'name').copyWith(),
+        User(
+          id: 'id',
+          username: 'username',
+          name: 'name',
+        ),
+      );
+      expect(
         User(id: 'id', username: 'username', name: 'name').copyWith(
           id: 'id1',
           username: 'username1',

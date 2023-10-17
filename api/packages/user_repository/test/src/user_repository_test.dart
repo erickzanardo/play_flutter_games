@@ -71,6 +71,7 @@ void main() {
             'username': 'test',
             'name': 'Test',
             'password': hashedPassword,
+            'isDeveloper': false,
           },
         ),
       );
