@@ -18,6 +18,8 @@ dependencies:
   session_repository:
     path: packages/session_repository
   shelf_cors_headers: ^0.1.5
+  studio_repository:
+    path: packages/studio_repository
   user_repository:
     path: packages/user_repository
 
