@@ -63,5 +63,88 @@ void main() {
         ProfileLoadFailure(),
       ],
     );
+
+    group('DeveloperModeChanged', () {
+      blocTest<ProfileBloc, ProfileState>(
+        'emits the profile saved when everything works nice',
+        build: () => ProfileBloc(
+          userRepository: userRepository,
+        ),
+        seed: () => const ProfileLoaded(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        setUp: () {
+          when(() => userRepository.setDeveloperMode(value: true)).thenAnswer(
+            (_) async {},
+          );
+        },
+        act: (bloc) => bloc.add(
+          const DeveloperModeChanged(
+            isDeveloperMode: true,
+          ),
+        ),
+        expect: () => const [
+          ProfileSaving(
+            User(
+              id: 'id',
+              name: 'name',
+              username: 'username',
+            ),
+          ),
+          ProfileLoaded(
+            User(
+              id: 'id',
+              name: 'name',
+              username: 'username',
+              isDeveloper: true,
+            ),
+          ),
+        ],
+      );
+
+      blocTest<ProfileBloc, ProfileState>(
+        'emits the profile save failed when something goes wrong',
+        build: () => ProfileBloc(
+          userRepository: userRepository,
+        ),
+        seed: () => const ProfileLoaded(
+          User(
+            id: 'id',
+            name: 'name',
+            username: 'username',
+          ),
+        ),
+        setUp: () {
+          when(() => userRepository.setDeveloperMode(value: true)).thenThrow(
+            Exception('Ops'),
+          );
+        },
+        act: (bloc) => bloc.add(
+          const DeveloperModeChanged(
+            isDeveloperMode: true,
+          ),
+        ),
+        expect: () => const [
+          ProfileSaving(
+            User(
+              id: 'id',
+              name: 'name',
+              username: 'username',
+            ),
+          ),
+          ProfileSaveFailed(
+            User(
+              id: 'id',
+              name: 'name',
+              username: 'username',
+            ),
+          ),
+        ],
+      );
+    });
   });
 }

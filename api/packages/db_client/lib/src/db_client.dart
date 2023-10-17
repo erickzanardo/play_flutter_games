@@ -82,4 +82,14 @@ class DbClient {
   ) async {
     _memory[entity]?[id] = value;
   }
+
+  /// Updates a field from a document by its [id] in the given [entity].
+  Future<void> updateFieldById(
+    String entity,
+    String id,
+    String field,
+    dynamic value,
+  ) async {
+    _memory[entity]?[id]?[field] = value;
+  }
 }

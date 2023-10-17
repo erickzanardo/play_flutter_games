@@ -13,6 +13,7 @@ class User extends Equatable {
     required this.id,
     required this.username,
     required this.name,
+    this.isDeveloper = false,
   });
 
   /// {@macro from_json}
@@ -27,9 +28,28 @@ class User extends Equatable {
   /// User name.
   final String name;
 
+  /// If the user is a developer.
+  final bool isDeveloper;
+
   /// Returns this object as a JSON map.
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
+  /// Returns a copy of this object with the given fields replaced with the
+  /// new values.
+  User copyWith({
+    String? id,
+    String? username,
+    String? name,
+    bool? isDeveloper,
+  }) {
+    return User(
+      id: id ?? this.id,
+      username: username ?? this.username,
+      name: name ?? this.name,
+      isDeveloper: isDeveloper ?? this.isDeveloper,
+    );
+  }
+
   @override
-  List<Object?> get props => [id, username, name];
+  List<Object?> get props => [id, username, name, isDeveloper];
 }

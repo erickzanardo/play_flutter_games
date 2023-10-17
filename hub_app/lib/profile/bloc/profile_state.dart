@@ -32,3 +32,17 @@ class ProfileLoadFailure extends ProfileState {
   @override
   List<Object> get props => [];
 }
+
+class ProfileSaving extends ProfileLoaded {
+  const ProfileSaving(super.user);
+
+  @override
+  List<Object> get props => [user];
+}
+
+class ProfileSaveFailed extends ProfileLoaded {
+  const ProfileSaveFailed(super.user);
+
+  @override
+  List<Object> get props => [user];
+}

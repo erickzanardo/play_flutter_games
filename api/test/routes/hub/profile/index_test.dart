@@ -6,7 +6,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:play_flutter_games_api/models/models.dart';
 import 'package:test/test.dart';
 
-import '../../../routes/hub/profile.dart' as route;
+import '../../../../routes/hub/profile/index.dart' as route;
 
 class _MockRequestContext extends Mock implements RequestContext {}
 
