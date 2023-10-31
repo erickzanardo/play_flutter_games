@@ -5,6 +5,7 @@ import 'package:play_flutter_games_hub/adapters/adapters.dart';
 import 'package:play_flutter_games_hub/app/app.dart';
 import 'package:play_flutter_games_hub/bootstrap.dart';
 import 'package:play_flutter_games_hub/token_provider_storage/token_provider_storage.dart';
+import 'package:studio_repository/studio_repository.dart';
 import 'package:token_provider/token_provider.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -31,6 +32,9 @@ void main() {
         ),
       ),
       userRepository: UserRepository(
+        apiClient: apiClient,
+      ),
+      studioRepository: StudioRepository(
         apiClient: apiClient,
       ),
       tokenProvider: tokenProvider,

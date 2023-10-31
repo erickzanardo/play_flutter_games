@@ -4,6 +4,7 @@ import 'package:hub_domain/hub_domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:play_flutter_games_hub/app/app.dart';
 import 'package:play_flutter_games_hub/auth/auth.dart';
+import 'package:studio_repository/studio_repository.dart';
 import 'package:token_provider/token_provider.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -15,6 +16,8 @@ class _MockUserRepository extends Mock implements UserRepository {}
 class _MockTokenProvider extends Mock implements TokenProvider {}
 
 class _MockPostRepository extends Mock implements PostRepository {}
+
+class _MockStudioRepository extends Mock implements StudioRepository {}
 
 void main() {
   group('App', () {
@@ -36,6 +39,7 @@ void main() {
           authenticationRepository: authenticationRepository,
           userRepository: _MockUserRepository(),
           postRepository: _MockPostRepository(),
+          studioRepository: _MockStudioRepository(),
           tokenProvider: tokenProvider,
         ),
       );
