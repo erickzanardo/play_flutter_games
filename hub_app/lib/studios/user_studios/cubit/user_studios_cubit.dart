@@ -8,8 +8,8 @@ part 'user_studios_state.dart';
 class UserStudiosCubit extends Cubit<UserStudiosState> {
   UserStudiosCubit({
     required StudioRepository studioRepository,
-  }) :  _studioRepository = studioRepository,
-    super(const UserStudiosState());
+  })  : _studioRepository = studioRepository,
+        super(const UserStudiosState());
 
   final StudioRepository _studioRepository;
 
@@ -18,7 +18,7 @@ class UserStudiosCubit extends Cubit<UserStudiosState> {
     try {
       final studios = await _studioRepository.getUserStudios();
       emit(state.copyWith(status: UserStudiosStatus.success, studios: studios));
-    } catch(e, s) {
+    } catch (e, s) {
       addError(e, s);
       emit(state.copyWith(status: UserStudiosStatus.failure));
     }

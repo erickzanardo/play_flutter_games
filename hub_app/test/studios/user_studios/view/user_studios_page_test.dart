@@ -35,9 +35,11 @@ void main() {
       await tester.pumpRoute(
         UserStudiosPage.route(),
         providers: [
-          RepositoryProvider<StudioRepository>(create: (_) {
-            return _MockStudioRepository();
-          },),
+          RepositoryProvider<StudioRepository>(
+            create: (_) {
+              return _MockStudioRepository();
+            },
+          ),
         ],
       );
       expect(find.byType(UserStudiosPage), findsOneWidget);

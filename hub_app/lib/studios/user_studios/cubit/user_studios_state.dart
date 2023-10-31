@@ -3,7 +3,6 @@ part of 'user_studios_cubit.dart';
 enum UserStudiosStatus { initial, loading, success, failure }
 
 class UserStudiosState extends Equatable {
-
   const UserStudiosState({
     this.status = UserStudiosStatus.initial,
     this.studios = const <Studio>[],

@@ -1,4 +1,5 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,10 +12,10 @@ class _MockStudioRepository extends Mock implements StudioRepository {}
 
 void main() {
   group('UserStudiosCubit', () {
-    late StudioRepository _studioRepository;
+    late StudioRepository studioRepository;
 
     setUp(() {
-      _studioRepository = _MockStudioRepository();
+      studioRepository = _MockStudioRepository();
     });
 
     test('has the correct initial state', () {
@@ -28,9 +29,9 @@ void main() {
 
     blocTest<UserStudiosCubit, UserStudiosState>(
       "fetch the user's studios",
-      build: () => UserStudiosCubit(studioRepository: _studioRepository),
+      build: () => UserStudiosCubit(studioRepository: studioRepository),
       setUp: () {
-        when(() => _studioRepository.getUserStudios()).thenAnswer(
+        when(() => studioRepository.getUserStudios()).thenAnswer(
           (_) async => [
             Studio(
               id: '',
@@ -64,9 +65,9 @@ void main() {
 
     blocTest<UserStudiosCubit, UserStudiosState>(
       'emits failure when the repository throws error',
-      build: () => UserStudiosCubit(studioRepository: _studioRepository),
+      build: () => UserStudiosCubit(studioRepository: studioRepository),
       setUp: () {
-        when(() => _studioRepository.getUserStudios()).thenThrow(
+        when(studioRepository.getUserStudios).thenThrow(
           Exception('Ops'),
         );
       },
