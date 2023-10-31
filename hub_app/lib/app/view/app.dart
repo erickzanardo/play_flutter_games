@@ -6,6 +6,7 @@ import 'package:play_flutter_games_hub/app/app.dart';
 import 'package:play_flutter_games_hub/auth/auth.dart';
 import 'package:play_flutter_games_hub/home/home.dart';
 import 'package:play_flutter_games_hub/l10n/l10n.dart';
+import 'package:studio_repository/studio_repository.dart';
 import 'package:token_provider/token_provider.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -14,6 +15,7 @@ class App extends StatelessWidget {
     required this.authenticationRepository,
     required this.postRepository,
     required this.userRepository,
+    required this.studioRepository,
     required this.tokenProvider,
     super.key,
   });
@@ -21,6 +23,7 @@ class App extends StatelessWidget {
   final AuthenticationRepository authenticationRepository;
   final PostRepository postRepository;
   final UserRepository userRepository;
+  final StudioRepository studioRepository;
   final TokenProvider tokenProvider;
 
   @override
@@ -35,6 +38,9 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider.value(
           value: userRepository,
+        ),
+        RepositoryProvider.value(
+          value: studioRepository,
         ),
       ],
       child: BlocProvider(
