@@ -24,6 +24,26 @@ class StudioInformationFailure implements Exception {
   final StackTrace stackTrace;
 }
 
+/// Exception thrown when a studio already exists.
+class StudioAlreadyExistsFailure implements Exception {}
+
+/// {@template studio_creation_failed}
+/// Exception thrown when creating a studio fails.
+/// {@endtemplate}
+class StudioCreationFailed implements Exception {
+  /// {@macro studio_creation_failed}
+  const StudioCreationFailed({
+    required this.message,
+    required this.stackTrace,
+  });
+
+  /// Message describing the error.
+  final String message;
+
+  /// Stack trace of the error.
+  final StackTrace stackTrace;
+}
+
 /// {@template studio_repository}
 /// Repository with access to studio features
 /// {@endtemplate}
@@ -52,6 +72,40 @@ class StudioRepository {
       return json
           .map((json) => Studio.fromJson(json as Map<String, dynamic>))
           .toList();
+    }
+  }
+
+  /// Creates a studio for the authenticated user.
+  Future<Studio> createStudio({
+    required String name,
+    required String description,
+    String? website,
+  }) async {
+    final response = await _apiClient.authenticatedPost(
+      'hub/studios',
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json',
+      },
+      body: jsonEncode({
+        'name': name,
+        'description': description,
+        'website': website,
+      }),
+    );
+
+    if (response.statusCode == HttpStatus.unauthorized) {
+      throw AuthenticationFailure();
+    } else if (response.statusCode == HttpStatus.conflict) {
+      throw StudioAlreadyExistsFailure();
+    } else if (response.statusCode != HttpStatus.ok) {
+      throw StudioCreationFailed(
+        message: 'Error creating studio:\n${response.statusCode}'
+            '\n${response.body}',
+        stackTrace: StackTrace.current,
+      );
+    } else {
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      return Studio.fromJson(json);
     }
   }
 }
