@@ -43,7 +43,7 @@ class HomeView extends StatelessWidget {
                         padding: const EdgeInsets.all(8),
                         child: ElevatedButton(
                           onPressed: () {
-                            // TODO(erickzanardo): Implement developer dashboard.
+                            // TODO(erickzanardo): Implement developer dashboard
                           },
                           child: Text(l10n.developerDashboard),
                         ),
