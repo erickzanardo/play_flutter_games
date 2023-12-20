@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hub_domain/hub_domain.dart';
 import 'package:mockingjay/mockingjay.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:play_flutter_games_hub/studios/studios.dart';
 import 'package:studio_repository/studio_repository.dart';
 
