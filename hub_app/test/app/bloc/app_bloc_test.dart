@@ -136,5 +136,24 @@ void main() {
         ),
       ],
     );
+
+    blocTest<AppBloc, AppState>(
+      'updates developer mode on DeveloperModeChanged',
+      build: () => AppBloc(
+        authenticationRepository: authenticationRepository,
+        userRepository: userRepository,
+        tokenProvider: tokenProvider,
+      ),
+      seed: () => AppAuthenticated(
+        sessionToken: '',
+      ),
+      act: (bloc) => bloc.add(DeveloperModeChanged(value: true)),
+      expect: () => [
+        AppAuthenticated(
+          sessionToken: '',
+          isDeveloperMode: true,
+        ),
+      ],
+    );
   });
 }
