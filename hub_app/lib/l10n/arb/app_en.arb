@@ -96,5 +96,13 @@
     "developerDashboard": "Developer Dashboard",
     "@developerDashboard": {
         "description": "Developer Dashboard label"
+    },
+    "myStudios": "My studios",
+    "@myStudios": {
+        "description": "My studios"
+    },
+    "emptyStudios": "No studio created yet",
+    "@emptyStudios": {
+        "description": "No studio created yet message"
     }
 }

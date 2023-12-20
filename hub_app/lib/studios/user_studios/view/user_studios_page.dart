@@ -40,22 +40,36 @@ class UserStudiosView extends StatelessWidget {
         child: CircularProgressIndicator(),
       );
     } else if (state.status == UserStudiosStatus.success) {
-      return Column(
-        children: [
-          for (final studio in state.studios)
-            Card(
-              child: Column(
+      return Scaffold(
+        body: state.studios.isEmpty
+            ? Center(
+                child: Text(l10n.emptyStudios),
+              )
+            : Column(
                 children: [
-                  Text(
-                    studio.name,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(studio.description),
+                  for (final studio in state.studios)
+                    Card(
+                      child: Column(
+                        children: [
+                          Text(
+                            studio.name,
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(studio.description),
+                        ],
+                      ),
+                    ),
                 ],
               ),
-            ),
-        ],
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              CreateStudioPage.route(),
+            );
+          },
+          child: const Icon(Icons.add),
+        ),
       );
     } else {
       return Center(
