@@ -83,7 +83,7 @@ class _AuthViewViewState extends State<AuthViewView> {
                 Card(
                   child: SizedBox(
                     width: 450,
-                    height: 300,
+                    height: 310,
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Column(
@@ -147,7 +147,7 @@ class _AuthViewViewState extends State<AuthViewView> {
                 Card(
                   child: SizedBox(
                     width: 450,
-                    height: 320,
+                    height: 358,
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Column(
