@@ -47,6 +47,7 @@ void main() {
 
     testWidgets('navigates back when cancelling', (tester) async {
       final navigator = MockNavigator();
+      when(navigator.canPop).thenReturn(true);
       await tester.pumpsubject(
         createPostBloc: bloc,
         mockNavigator: navigator,
