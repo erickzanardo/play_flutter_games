@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:play_flutter_games_hub/app/app.dart';
 import 'package:play_flutter_games_hub/create_post/create_post.dart';
+import 'package:play_flutter_games_hub/developer_dashboard/developer_dashboard.dart';
 import 'package:play_flutter_games_hub/home/home.dart';
 import 'package:play_flutter_games_hub/l10n/l10n.dart';
 import 'package:play_flutter_games_hub/profile/profile.dart';
@@ -43,7 +44,9 @@ class HomeView extends StatelessWidget {
                         padding: const EdgeInsets.all(8),
                         child: ElevatedButton(
                           onPressed: () {
-                            // TODO(erickzanardo): Implement developer dashboard
+                            Navigator.of(context).push(
+                              DeveloperDashboardPage.route(),
+                            );
                           },
                           child: Text(l10n.developerDashboard),
                         ),

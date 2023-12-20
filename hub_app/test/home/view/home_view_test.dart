@@ -190,10 +190,9 @@ void main() {
 
         await tester.pump();
 
-        // TODO(erickzanardo): Add when the developer dashboard is implemented.
-        //verify(
-        //  () => mockNavigator.push<void>(any()),
-        //).called(1);
+        verify(
+          () => mockNavigator.push<void>(any()),
+        ).called(1);
       },
     );
 

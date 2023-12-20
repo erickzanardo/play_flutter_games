@@ -52,6 +52,7 @@ class App extends StatelessWidget {
         child: MaterialApp(
           theme: ThemeData(
             appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+            scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSwatch(
               accentColor: const Color(0xFF13B9FF),
             ),
