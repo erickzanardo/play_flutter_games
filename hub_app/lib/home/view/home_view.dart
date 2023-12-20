@@ -35,16 +35,31 @@ class HomeView extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        ProfilePage.route(),
-                      );
-                    },
-                    child: Text(l10n.profile),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    if (appState.isDeveloperMode)
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // TODO(erickzanardo): Implement developer dashboard
+                          },
+                          child: Text(l10n.developerDashboard),
+                        ),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            ProfilePage.route(),
+                          );
+                        },
+                        child: Text(l10n.profile),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(

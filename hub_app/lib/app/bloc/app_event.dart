@@ -5,12 +5,16 @@ abstract class AppEvent extends Equatable {
 }
 
 class SessionLoaded extends AppEvent {
-  const SessionLoaded({required this.sessionToken});
+  const SessionLoaded({
+    required this.sessionToken,
+    required this.isDeveloperMode,
+  });
 
   final String sessionToken;
+  final bool isDeveloperMode;
 
   @override
-  List<Object> get props => [sessionToken];
+  List<Object> get props => [sessionToken, isDeveloperMode];
 }
 
 class SessionLoggedOff extends AppEvent {
@@ -18,4 +22,13 @@ class SessionLoggedOff extends AppEvent {
 
   @override
   List<Object> get props => [];
+}
+
+class DeveloperModeChanged extends AppEvent {
+  const DeveloperModeChanged({required this.value});
+
+  final bool value;
+
+  @override
+  List<Object> get props => [value];
 }

@@ -10,23 +10,52 @@ void main() {
       const session2 = 'TOKEN_2';
       test('can be instantiated', () {
         expect(
-          SessionLoaded(sessionToken: session1),
+          SessionLoaded(
+            sessionToken: session1,
+            isDeveloperMode: false,
+          ),
           isNotNull,
         );
       });
 
       test('supports equality', () {
         expect(
-          SessionLoaded(sessionToken: session1),
+          SessionLoaded(
+            sessionToken: session1,
+            isDeveloperMode: false,
+          ),
           equals(
-            SessionLoaded(sessionToken: session1),
+            SessionLoaded(
+              sessionToken: session1,
+              isDeveloperMode: false,
+            ),
           ),
         );
         expect(
-          SessionLoaded(sessionToken: session1),
+          SessionLoaded(
+            sessionToken: session1,
+            isDeveloperMode: false,
+          ),
           isNot(
             equals(
-              SessionLoaded(sessionToken: session2),
+              SessionLoaded(
+                sessionToken: session2,
+                isDeveloperMode: false,
+              ),
+            ),
+          ),
+        );
+        expect(
+          SessionLoaded(
+            sessionToken: session1,
+            isDeveloperMode: false,
+          ),
+          isNot(
+            equals(
+              SessionLoaded(
+                sessionToken: session1,
+                isDeveloperMode: true,
+              ),
             ),
           ),
         );

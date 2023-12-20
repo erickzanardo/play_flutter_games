@@ -72,6 +72,24 @@ void main() {
     );
 
     testWidgets(
+      'renders the developer dashboard button when is in dev mode',
+      (tester) async {
+        mockAppState(
+          AppAuthenticated(
+            sessionToken: 'TOKEN_1',
+            isDeveloperMode: true,
+          ),
+        );
+        await tester.pumpSuject(
+          appBloc: appBloc,
+          homeBloc: homeBloc,
+        );
+        expect(find.text('Profile.'), findsOneWidget);
+        expect(find.text('Developer Dashboard'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
       'renders the posts',
       (tester) async {
         mockAppState(
@@ -143,6 +161,39 @@ void main() {
         verify(
           () => mockNavigator.push<void>(any()),
         ).called(1);
+      },
+    );
+
+    testWidgets(
+      'navigates to the developer dashboard page when the dev dashboard '
+      'button is tapped',
+      (tester) async {
+        mockAppState(
+          AppAuthenticated(
+            sessionToken: 'TOKEN_1',
+            isDeveloperMode: true,
+          ),
+        );
+
+        final mockNavigator = MockNavigator();
+        when(() => mockNavigator.push<void>(any())).thenAnswer(
+          (_) async {},
+        );
+        when(mockNavigator.canPop).thenReturn(true);
+
+        await tester.pumpSuject(
+          appBloc: appBloc,
+          homeBloc: homeBloc,
+          mockNavigator: mockNavigator,
+        );
+        await tester.tap(find.text('Developer Dashboard'));
+
+        await tester.pump();
+
+        // TODO(erickzanardo): Add when the developer dashboard is implemented.
+        //verify(
+        //  () => mockNavigator.push<void>(any()),
+        //).called(1);
       },
     );
 

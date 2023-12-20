@@ -43,6 +43,7 @@ void main() {
       registerFallbackValue(
         SessionLoaded(
           sessionToken: '',
+          isDeveloperMode: false,
         ),
       );
       registerFallbackValue(

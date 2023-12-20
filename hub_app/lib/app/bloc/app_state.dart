@@ -12,10 +12,17 @@ class AppInitial extends AppState {
 }
 
 class AppAuthenticated extends AppState {
-  const AppAuthenticated({required this.sessionToken});
+  const AppAuthenticated({
+    required this.sessionToken,
+    this.isDeveloperMode = false,
+  });
 
   final String sessionToken;
+  final bool isDeveloperMode;
 
   @override
-  List<Object> get props => [sessionToken];
+  List<Object> get props => [
+        sessionToken,
+        isDeveloperMode,
+      ];
 }
