@@ -3,6 +3,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hub_domain/hub_domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:play_flutter_games_hub/app/app.dart';
 import 'package:token_provider/token_provider.dart';
@@ -27,6 +28,13 @@ void main() {
           .thenAnswer((_) => const Stream.empty());
 
       userRepository = _MockUserRepository();
+      when(userRepository.getUserProfile).thenAnswer(
+        (_) async => User(
+          name: 'Erick',
+          id: '1',
+          username: 'e',
+        ),
+      );
 
       tokenProvider = _MockTokenProvider();
       when(() => tokenProvider.current).thenAnswer((invocation) async => null);
@@ -112,10 +120,19 @@ void main() {
         when(userRepository.getUserSession).thenAnswer(
           (_) async => 'TOKEN',
         );
+        when(userRepository.getUserProfile).thenAnswer(
+          (_) async => User(
+            name: 'Erick',
+            id: '1',
+            username: 'e',
+            isDeveloper: true,
+          ),
+        );
       },
       expect: () => [
         AppAuthenticated(
           sessionToken: 'TOKEN',
+          isDeveloperMode: true,
         ),
       ],
     );
