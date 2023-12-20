@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:play_flutter_games_hub/app/app.dart' as app;
 import 'package:play_flutter_games_hub/l10n/l10n.dart';
 import 'package:play_flutter_games_hub/profile/profile.dart';
 
@@ -41,6 +42,11 @@ class ProfileView extends StatelessWidget {
                                 isDeveloperMode: value,
                               ),
                             );
+                            context.read<app.AppBloc>().add(
+                                  app.DeveloperModeChanged(
+                                    value: value,
+                                  ),
+                                );
                           },
                         ),
                       ],

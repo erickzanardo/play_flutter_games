@@ -20,11 +20,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         super(const AppInitial()) {
     on<SessionLoaded>(_onSessionLoaded);
     on<SessionLoggedOff>(_onSessionLoggedOff);
+    on<DeveloperModeChanged>(_onDeveloperModeChanged);
 
     _sessionSubscription = _authenticationRepository.session.listen((event) {
       if (event != null) {
         _tokenProvider.applyToken(event);
-        add(SessionLoaded(sessionToken: event));
+
+        final isDeveloper =
+            state is SessionLoaded && (state as SessionLoaded).isDeveloperMode;
+
+        add(
+          SessionLoaded(
+            sessionToken: event,
+            isDeveloperMode: isDeveloper,
+          ),
+        );
       } else {
         add(const SessionLoggedOff());
         _tokenProvider.clear();
@@ -34,7 +44,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     tokenProvider.current.then((value) async {
       if (value != null) {
         final session = await _userRepository.getUserSession();
-        add(SessionLoaded(sessionToken: session));
+        final user = await _userRepository.getUserProfile();
+        add(
+          SessionLoaded(
+            sessionToken: session,
+            isDeveloperMode: user.isDeveloper,
+          ),
+        );
       }
     });
   }
@@ -48,7 +64,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     SessionLoaded event,
     Emitter<AppState> emit,
   ) {
-    emit(AppAuthenticated(sessionToken: event.sessionToken));
+    emit(
+      AppAuthenticated(
+        sessionToken: event.sessionToken,
+        isDeveloperMode: event.isDeveloperMode,
+      ),
+    );
   }
 
   void _onSessionLoggedOff(
@@ -56,6 +77,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     Emitter<AppState> emit,
   ) {
     emit(const AppInitial());
+  }
+
+  void _onDeveloperModeChanged(
+    DeveloperModeChanged event,
+    Emitter<AppState> emit,
+  ) {
+    if (state is AppAuthenticated) {
+      final currentState = state as AppAuthenticated;
+      emit(
+        AppAuthenticated(
+          sessionToken: currentState.sessionToken,
+          isDeveloperMode: event.value,
+        ),
+      );
+    }
   }
 
   @override

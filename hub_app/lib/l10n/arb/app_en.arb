@@ -92,5 +92,9 @@
     "postCreated": "Post created",
     "@postCreated": {
         "description": "Post created message"
+    },
+    "developerDashboard": "Developer Dashboard",
+    "@developerDashboard": {
+        "description": "Developer Dashboard label"
     }
 }
