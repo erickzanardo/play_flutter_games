@@ -129,6 +129,7 @@ void main() {
         when(() => mockNavigator.push<void>(any())).thenAnswer(
           (_) async {},
         );
+        when(mockNavigator.canPop).thenReturn(true);
 
         await tester.pumpSuject(
           appBloc: appBloc,
@@ -161,6 +162,7 @@ void main() {
         when(() => mockNavigator.push<Post?>(any())).thenAnswer(
           (_) async => post,
         );
+        when(mockNavigator.canPop).thenReturn(true);
 
         await tester.pumpSuject(
           appBloc: appBloc,
